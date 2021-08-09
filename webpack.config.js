@@ -2,7 +2,7 @@
  * @Author       : xiehan(timo)
  * @Date         : 2021-07-17 16:09:16
  * @LastEditors  : xiehan2747
- * @LastEditTime : 2021-07-25 10:19:46
+ * @LastEditTime : 2021-08-08 10:26:02
  * @FilePath     : /webpack2021/webpack.config.js
  */
 
@@ -35,6 +35,18 @@ module.exports = {
     // loader 配置
     module: {
         rules: [
+            {
+                test: /\.(js)$/,
+                loader: 'eslint-loader',
+                enfore: 'pre', // 强制前置执行   pre | normal | post
+                include: path.join(__dirname, 'src'),
+                exclude: /node_modules/,
+
+            },
+            {
+                test: /\.(js)$/,
+                use: 'babel-eslint',
+            },
             {
                 test: /\.css$/,
                 // 从右向左处理 css 文件， loader 是一个函数
